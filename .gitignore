@@ -426,3 +426,20 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# Factory-local tooling and acquisition: never baseline these directories.
+.venv/
+.factory-local/
+.env.*
+!.env.example
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+
+# Shared, credential-free MCP configuration is intentional.
+!.vscode/mcp.json
+
+# Reviewed baseline directories are evidence, not Visual Studio build output.
+!docs/intake/records/**/artifacts/
+!tests/fixtures/intake/workspace/docs/intake/records/**/artifacts/

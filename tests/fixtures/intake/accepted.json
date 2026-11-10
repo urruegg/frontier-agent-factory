@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "intake_id": "synthetic-accepted",
+  "supersedes": null,
+  "selected_solutions": [{
+    "solution_id": "sample-solution",
+    "agent_ids": ["sample-agent"],
+    "scope": "A synthetic local status label; no real source data or infrastructure.",
+    "owners": ["Synthetic fixture owner"]
+  }],
+  "source": {
+    "kind": "exported-package",
+    "references": ["synthetic-export-only"],
+    "plugin_version": "unknown",
+    "blueprint_version": "unknown"
+  },
+  "acquisition": {
+    "status": "succeeded",
+    "method": "exported-files",
+    "verified_by": "Synthetic fixture author",
+    "verified_at": "2026-11-10T00:00:00Z",
+    "evidence": "Two ordinary synthetic Markdown files, not a live export or tenant acquisition."
+  },
+  "transfer": {
+    "classification": "public",
+    "destination": "Synthetic fixture workspace, not a customer repository",
+    "permission": "approved",
+    "approval": {
+      "by": "Synthetic reviewer (not a real approval)",
+      "at": "2026-11-10T00:00:00Z",
+      "reference": "synthetic-transfer-evidence-only"
+    }
+  },
+  "artifacts": [
+    {
+      "id": "sample-prd", "solution_ids": ["sample-solution"], "role": "prd",
+      "status": "provided", "rationale": "Synthetic requirement and acceptance context.",
+      "source": {
+        "path": "prd.md", "sha256": "9f5649f39f853100e980aa88accd27ab33a672297402e07a33538482f7334835",
+        "reference": "synthetic-export-only/prd.md", "version": "synthetic-v1",
+        "modified_at": "unknown"
+      },
+      "baseline": {
+        "path": "docs\\intake\\records\\synthetic-accepted\\artifacts\\prd.md",
+        "sha256": "9f5649f39f853100e980aa88accd27ab33a672297402e07a33538482f7334835"
+      },
+      "transformation": {"kind": "none", "rationale": "Unmodified synthetic bytes.", "approval": null}
+    },
+    {
+      "id": "sample-design", "solution_ids": ["sample-solution"], "role": "solution-design",
+      "status": "provided", "rationale": "Synthetic local-only design.",
+      "source": {
+        "path": "design.md", "sha256": "94cc37d280ace6edca85d026624b83501b9f198221e7d818070121877b828610",
+        "reference": "synthetic-export-only/design.md", "version": "unknown",
+        "modified_at": "2026-11-10T00:00:00Z"
+      },
+      "baseline": {
+        "path": "docs\\intake\\records\\synthetic-accepted\\artifacts\\design.md",
+        "sha256": "94cc37d280ace6edca85d026624b83501b9f198221e7d818070121877b828610"
+      },
+      "transformation": {"kind": "none", "rationale": "Unmodified synthetic bytes.", "approval": null}
+    },
+    {
+      "id": "sample-decisions", "solution_ids": ["sample-solution"], "role": "decisions",
+      "status": "not-applicable", "rationale": "This synthetic local label has no separate architecture decisions.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-readiness", "solution_ids": ["sample-solution"], "role": "it-readiness",
+      "status": "not-applicable", "rationale": "The fixture has no deployment or IT dependencies.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-identity", "solution_ids": ["sample-solution"], "role": "identity",
+      "status": "not-applicable", "rationale": "The fixture has no identity or authenticated runtime.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-blueprint", "solution_ids": ["sample-solution"], "role": "blueprint",
+      "status": "not-applicable", "rationale": "No external blueprint is used by this local-only fixture.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-value", "solution_ids": ["sample-solution"], "role": "value",
+      "status": "not-applicable", "rationale": "The synthetic fixture has no business investment case.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-finops", "solution_ids": ["sample-solution"], "role": "finops",
+      "status": "not-applicable", "rationale": "The local-only fixture incurs no metered resource cost.",
+      "source": null, "baseline": null, "transformation": null
+    }
+  ],
+  "requirements": [{
+    "id": "show-status", "solution_id": "sample-solution",
+    "description": "Show a synthetic status label.",
+    "acceptance_criteria": ["A local unit test can verify the exact synthetic label."]
+  }],
+  "gaps": [],
+  "decisions": [],
+  "review": {
+    "status": "accepted",
+    "rationale": "Synthetic complete baseline used only for offline validator tests.",
+    "approval": {
+      "by": "Synthetic reviewer (not a real approval)",
+      "at": "2026-11-10T00:00:00Z",
+      "reference": "synthetic-review-evidence-only"
+    }
+  }
+}

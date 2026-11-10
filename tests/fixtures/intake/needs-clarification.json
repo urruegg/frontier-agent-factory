@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "intake_id": "synthetic-clarification",
+  "supersedes": null,
+  "selected_solutions": [{
+    "solution_id": "sample-solution", "agent_ids": ["sample-agent"],
+    "scope": "Synthetic requirements arrived without the required solution design.",
+    "owners": ["Synthetic fixture owner"]
+  }],
+  "source": {
+    "kind": "m365-files", "references": ["synthetic-selected-file-only"],
+    "plugin_version": "unknown", "blueprint_version": "unknown"
+  },
+  "acquisition": {
+    "status": "succeeded", "method": "exact-file-download",
+    "verified_by": "Synthetic fixture author", "verified_at": "2026-11-10T00:00:00Z",
+    "evidence": "Synthetic local bytes simulate one selected file; no tenant access occurred."
+  },
+  "transfer": {
+    "classification": "public", "destination": "Synthetic fixture workspace",
+    "permission": "approved",
+    "approval": {
+      "by": "Synthetic reviewer (not a real approval)", "at": "2026-11-10T00:00:00Z",
+      "reference": "synthetic-transfer-evidence-only"
+    }
+  },
+  "artifacts": [
+    {
+      "id": "sample-prd", "solution_ids": ["sample-solution"], "role": "prd",
+      "status": "provided", "rationale": "One selected synthetic document was acquired.",
+      "source": {
+        "path": "prd.md", "sha256": "9f5649f39f853100e980aa88accd27ab33a672297402e07a33538482f7334835",
+        "reference": "synthetic-selected-file-only", "version": "synthetic-v1",
+        "modified_at": "unknown"
+      },
+      "baseline": {
+        "path": "docs\\intake\\records\\synthetic-clarification\\artifacts\\prd.md",
+        "sha256": "9f5649f39f853100e980aa88accd27ab33a672297402e07a33538482f7334835"
+      },
+      "transformation": {"kind": "none", "rationale": "Unmodified synthetic file.", "approval": null}
+    },
+    {
+      "id": "sample-design", "solution_ids": ["sample-solution"], "role": "solution-design",
+      "status": "missing", "rationale": "The selected source set lacks a solution design; acceptance is blocked.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-decisions", "solution_ids": ["sample-solution"], "role": "decisions",
+      "status": "missing", "rationale": "Relevant decisions need clarification with the design.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-readiness", "solution_ids": ["sample-solution"], "role": "it-readiness",
+      "status": "not-applicable", "rationale": "The synthetic local-only fixture has no deployment.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-identity", "solution_ids": ["sample-solution"], "role": "identity",
+      "status": "not-applicable", "rationale": "The synthetic fixture has no runtime identity.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-blueprint", "solution_ids": ["sample-solution"], "role": "blueprint",
+      "status": "not-applicable", "rationale": "No blueprint is used by this synthetic fixture.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-value", "solution_ids": ["sample-solution"], "role": "value",
+      "status": "not-applicable", "rationale": "The synthetic fixture has no investment case.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-finops", "solution_ids": ["sample-solution"], "role": "finops",
+      "status": "not-applicable", "rationale": "The synthetic local-only fixture has no resource cost.",
+      "source": null, "baseline": null, "transformation": null
+    }
+  ],
+  "requirements": [{
+    "id": "show-status", "solution_id": "sample-solution",
+    "description": "Show a synthetic label.",
+    "acceptance_criteria": ["Local unit tests verify the synthetic label."]
+  }],
+  "gaps": [{
+    "id": "missing-design", "solution_id": "sample-solution",
+    "description": "Obtain the required solution design.", "blocking": true,
+    "status": "open", "resolution": null
+  }],
+  "decisions": [],
+  "review": {
+    "status": "needs-clarification", "rationale": "Required design evidence is missing.",
+    "approval": null
+  }
+}

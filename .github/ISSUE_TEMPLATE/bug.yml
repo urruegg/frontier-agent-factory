@@ -1,0 +1,21 @@
+name: Foundation bug
+description: Report a reproducible repository-tooling or documentation defect.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, protected references or sensitive artifacts. Report security issues privately.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction and expected behavior
+      description: Include a minimal synthetic example, host and runtime versions.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Actual result
+      description: Include a sanitized command, exit result and error.
+    validations:
+      required: true

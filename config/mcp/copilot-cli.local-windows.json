@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "workiq": {
+      "type": "local",
+      "command": "node",
+      "args": [
+        "${FACTORY_ROOT}\\node_modules\\@microsoft\\workiq\\bin\\workiq.js",
+        "mcp",
+        "--account",
+        "${WORKIQ_ACCOUNT}"
+      ],
+      "tools": []
+    }
+  }
+}

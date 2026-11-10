@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "intake_id": "replace-intake-id",
+  "supersedes": null,
+  "selected_solutions": [{
+    "solution_id": "replace-solution-id",
+    "agent_ids": ["replace-agent-id"],
+    "scope": "",
+    "owners": []
+  }],
+  "source": {
+    "kind": "exported-package",
+    "references": [],
+    "plugin_version": "unknown",
+    "blueprint_version": "unknown"
+  },
+  "acquisition": {
+    "status": "not-performed",
+    "method": "exported-files",
+    "verified_by": "",
+    "verified_at": "",
+    "evidence": ""
+  },
+  "transfer": {
+    "classification": "internal",
+    "destination": "",
+    "permission": "pending",
+    "approval": null
+  },
+  "artifacts": [
+    {
+      "id": "prd", "solution_ids": ["replace-solution-id"], "role": "prd",
+      "status": "missing", "rationale": "Replace with a specific missing-artifact explanation.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "solution-design", "solution_ids": ["replace-solution-id"], "role": "solution-design",
+      "status": "missing", "rationale": "Replace with a specific missing-artifact explanation.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "decisions", "solution_ids": ["replace-solution-id"], "role": "decisions",
+      "status": "missing", "rationale": "Assess relevant decisions; explain any genuine N/A.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "it-readiness", "solution_ids": ["replace-solution-id"], "role": "it-readiness",
+      "status": "missing", "rationale": "Assess readiness applicability; explain any genuine N/A.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "identity", "solution_ids": ["replace-solution-id"], "role": "identity",
+      "status": "missing", "rationale": "Assess identity applicability; explain any genuine N/A.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "blueprint", "solution_ids": ["replace-solution-id"], "role": "blueprint",
+      "status": "missing", "rationale": "Assess blueprint applicability; explain any genuine N/A.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "value", "solution_ids": ["replace-solution-id"], "role": "value",
+      "status": "missing", "rationale": "Assess value applicability; explain any genuine N/A.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "finops", "solution_ids": ["replace-solution-id"], "role": "finops",
+      "status": "missing", "rationale": "Assess FinOps applicability; explain any genuine N/A.",
+      "source": null, "baseline": null, "transformation": null
+    }
+  ],
+  "requirements": [],
+  "gaps": [],
+  "decisions": [],
+  "review": {
+    "status": "needs-clarification",
+    "rationale": "Not yet acquired or reviewed; this template is intentionally invalid.",
+    "approval": null
+  }
+}

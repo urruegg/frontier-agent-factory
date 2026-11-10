@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "workiq": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${workspaceFolder}\\node_modules\\@microsoft\\workiq\\bin\\workiq.js",
+        "mcp",
+        "--account",
+        "${env:WORKIQ_ACCOUNT}"
+      ]
+    }
+  }
+}

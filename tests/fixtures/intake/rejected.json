@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "intake_id": "synthetic-rejected",
+  "supersedes": null,
+  "selected_solutions": [{
+    "solution_id": "sample-solution", "agent_ids": ["sample-agent"],
+    "scope": "Synthetic proposal outside the approved repository scope.",
+    "owners": ["Synthetic fixture owner"]
+  }],
+  "source": {
+    "kind": "exported-package", "references": ["synthetic-rejected-proposal"],
+    "plugin_version": "unknown", "blueprint_version": "unknown"
+  },
+  "acquisition": {
+    "status": "succeeded", "method": "exported-files",
+    "verified_by": "Synthetic fixture author", "verified_at": "2026-11-10T00:00:00Z",
+    "evidence": "A synthetic proposal was reviewed locally and rejected; no source content is transferred."
+  },
+  "transfer": {
+    "classification": "internal", "destination": "Synthetic destination only",
+    "permission": "denied", "approval": null
+  },
+  "artifacts": [
+    {
+      "id": "sample-prd", "solution_ids": ["sample-solution"], "role": "prd",
+      "status": "missing", "rationale": "Not transferred because the synthetic proposal was rejected.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-design", "solution_ids": ["sample-solution"], "role": "solution-design",
+      "status": "missing", "rationale": "Not transferred because the synthetic proposal was rejected.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-decisions", "solution_ids": ["sample-solution"], "role": "decisions",
+      "status": "missing", "rationale": "No decision files are retained for the rejected proposal.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-readiness", "solution_ids": ["sample-solution"], "role": "it-readiness",
+      "status": "not-applicable", "rationale": "The synthetic local-only proposal has no deployment.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-identity", "solution_ids": ["sample-solution"], "role": "identity",
+      "status": "not-applicable", "rationale": "The synthetic proposal has no runtime identity.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-blueprint", "solution_ids": ["sample-solution"], "role": "blueprint",
+      "status": "not-applicable", "rationale": "No blueprint applies to this synthetic proposal.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-value", "solution_ids": ["sample-solution"], "role": "value",
+      "status": "not-applicable", "rationale": "The synthetic fixture has no investment case.",
+      "source": null, "baseline": null, "transformation": null
+    },
+    {
+      "id": "sample-finops", "solution_ids": ["sample-solution"], "role": "finops",
+      "status": "not-applicable", "rationale": "The synthetic proposal has no metered resources.",
+      "source": null, "baseline": null, "transformation": null
+    }
+  ],
+  "requirements": [],
+  "gaps": [],
+  "decisions": [],
+  "review": {
+    "status": "rejected", "rationale": "The synthetic scope is not authorized for this factory.",
+    "approval": null
+  }
+}

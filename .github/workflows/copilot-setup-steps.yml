@@ -1,0 +1,39 @@
+name: Copilot development setup
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+      - requirements-dev.txt
+      - package.json
+      - package-lock.json
+
+permissions:
+  contents: read
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.14"
+      - name: Set up Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+      - name: Restore development tools only
+        run: |
+          python -m pip install -r requirements-dev.txt
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check configuration without tenant authentication
+        run: |
+          python -m tools.superpowers verify
+          python -m tools.workiq check-config

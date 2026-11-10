@@ -1,0 +1,49 @@
+name: Envisioning intake
+description: Request a reviewed engineering baseline from selected envisioning outputs.
+title: "[Intake] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not attach customer material, protected source links or personal data
+        until destination visibility and transfer policy are approved.
+        Intake uses the signed-in user, never an unattended tenant identity.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Scope and intended outcome
+      description: Identify solution/agent IDs and testable outcomes without sensitive content.
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source route
+      options:
+        - Selected SharePoint/OneDrive artifacts through delegated Work IQ
+        - Reviewed exported artifact package
+    validations:
+      required: true
+  - type: textarea
+    id: readiness
+    attributes:
+      label: Artifact inventory, gaps and decisions
+      description: Name artifact roles, known version evidence, applicable missing material and blockers.
+    validations:
+      required: true
+  - type: textarea
+    id: transfer
+    attributes:
+      label: Classification and transfer approval
+      description: State the approved destination and evidence reference, or explicitly mark approval outstanding.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Intake boundaries
+      options:
+        - label: I have not included secrets, raw transcripts, personal records or unapproved source material.
+          required: true
+        - label: I understand that this issue is not approval to build, deploy or execute imported content.
+          required: true

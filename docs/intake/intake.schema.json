@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:frontier-agent-factory:intake:1.0",
+  "title": "Reviewed factory intake evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "intake_id", "supersedes", "selected_solutions", "source",
+    "acquisition", "transfer", "artifacts", "requirements", "gaps", "decisions", "review"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "intake_id": {"$ref": "#/$defs/id"},
+    "supersedes": {"oneOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]},
+    "selected_solutions": {
+      "type": "array", "minItems": 1, "maxItems": 32,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["solution_id", "agent_ids", "scope", "owners"],
+        "properties": {
+          "solution_id": {"$ref": "#/$defs/id"},
+          "agent_ids": {
+            "type": "array", "minItems": 1, "maxItems": 64, "uniqueItems": true,
+            "items": {"$ref": "#/$defs/id"}
+          },
+          "scope": {"$ref": "#/$defs/text"},
+          "owners": {
+            "type": "array", "minItems": 1, "maxItems": 32, "uniqueItems": true,
+            "items": {"$ref": "#/$defs/text"}
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "references", "plugin_version", "blueprint_version"],
+      "properties": {
+        "kind": {"enum": ["exported-package", "m365-files"]},
+        "references": {
+          "type": "array", "minItems": 1, "maxItems": 64, "uniqueItems": true,
+          "items": {"$ref": "#/$defs/text"}
+        },
+        "plugin_version": {"$ref": "#/$defs/metadata"},
+        "blueprint_version": {"$ref": "#/$defs/metadata"}
+      }
+    },
+    "acquisition": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "method", "verified_by", "verified_at", "evidence"],
+      "properties": {
+        "status": {"const": "succeeded"},
+        "method": {"enum": ["exported-files", "exact-file-download"]},
+        "verified_by": {"$ref": "#/$defs/text"},
+        "verified_at": {"type": "string", "format": "date-time"},
+        "evidence": {"$ref": "#/$defs/text"}
+      }
+    },
+    "transfer": {
+      "type": "object", "additionalProperties": false,
+      "required": ["classification", "destination", "permission", "approval"],
+      "properties": {
+        "classification": {"enum": ["public", "internal", "confidential", "restricted"]},
+        "destination": {"$ref": "#/$defs/text"},
+        "permission": {"enum": ["approved", "pending", "denied"]},
+        "approval": {"$ref": "#/$defs/optionalApproval"}
+      }
+    },
+    "artifacts": {
+      "type": "array", "minItems": 1, "maxItems": 256,
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "requirements": {
+      "type": "array", "maxItems": 512,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "solution_id", "description", "acceptance_criteria"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "solution_id": {"$ref": "#/$defs/id"},
+          "description": {"$ref": "#/$defs/text"},
+          "acceptance_criteria": {
+            "type": "array", "minItems": 1, "maxItems": 64,
+            "items": {"$ref": "#/$defs/text"}
+          }
+        }
+      }
+    },
+    "gaps": {
+      "type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/issue"}
+    },
+    "decisions": {
+      "type": "array", "maxItems": 256, "items": {"$ref": "#/$defs/issue"}
+    },
+    "review": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "rationale", "approval"],
+      "properties": {
+        "status": {"enum": ["accepted", "needs-clarification", "rejected"]},
+        "rationale": {"$ref": "#/$defs/text"},
+        "approval": {"$ref": "#/$defs/optionalApproval"}
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 80
+    },
+    "text": {
+      "type": "string", "minLength": 1, "maxLength": 4000, "pattern": "\\S"
+    },
+    "metadata": {
+      "description": "Use the literal unknown when upstream version metadata is unavailable.",
+      "type": "string", "minLength": 1, "maxLength": 512, "pattern": "\\S"
+    },
+    "path": {"type": "string", "minLength": 1, "maxLength": 260},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "approval": {
+      "description": "Recorded human evidence only; schema validation does not authenticate the reviewer.",
+      "type": "object", "additionalProperties": false,
+      "required": ["by", "at", "reference"],
+      "properties": {
+        "by": {"$ref": "#/$defs/text"},
+        "at": {"type": "string", "format": "date-time"},
+        "reference": {"$ref": "#/$defs/text"}
+      }
+    },
+    "optionalApproval": {
+      "oneOf": [{"$ref": "#/$defs/approval"}, {"type": "null"}]
+    },
+    "sourceFile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "reference", "version", "modified_at"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "reference": {"$ref": "#/$defs/text"},
+        "version": {"$ref": "#/$defs/metadata"},
+        "modified_at": {
+          "oneOf": [
+            {"type": "string", "format": "date-time"},
+            {"const": "unknown"}
+          ]
+        }
+      }
+    },
+    "baselineFile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "transformation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "rationale", "approval"],
+      "properties": {
+        "kind": {"enum": ["none", "redaction", "transformation"]},
+        "rationale": {"$ref": "#/$defs/text"},
+        "approval": {"$ref": "#/$defs/optionalApproval"}
+      }
+    },
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "id", "solution_ids", "role", "status", "rationale",
+        "source", "baseline", "transformation"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "solution_ids": {
+          "type": "array", "minItems": 1, "maxItems": 32, "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "role": {
+          "enum": ["prd", "solution-design", "decisions", "it-readiness", "identity", "blueprint", "value", "finops"]
+        },
+        "status": {"enum": ["provided", "missing", "not-applicable"]},
+        "rationale": {"$ref": "#/$defs/text"},
+        "source": {"oneOf": [{"$ref": "#/$defs/sourceFile"}, {"type": "null"}]},
+        "baseline": {"oneOf": [{"$ref": "#/$defs/baselineFile"}, {"type": "null"}]},
+        "transformation": {"oneOf": [{"$ref": "#/$defs/transformation"}, {"type": "null"}]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "provided"}}},
+          "then": {
+            "properties": {
+              "source": {"$ref": "#/$defs/sourceFile"},
+              "baseline": {"$ref": "#/$defs/baselineFile"},
+              "transformation": {"$ref": "#/$defs/transformation"}
+            }
+          },
+          "else": {
+            "properties": {
+              "source": {"type": "null"}, "baseline": {"type": "null"},
+              "transformation": {"type": "null"}
+            }
+          }
+        }
+      ]
+    },
+    "issue": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "solution_id", "description", "blocking", "status", "resolution"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "solution_id": {"$ref": "#/$defs/id"},
+        "description": {"$ref": "#/$defs/text"},
+        "blocking": {"type": "boolean"},
+        "status": {"enum": ["open", "resolved"]},
+        "resolution": {"oneOf": [{"$ref": "#/$defs/text"}, {"type": "null"}]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "resolved"}}},
+          "then": {"properties": {"resolution": {"$ref": "#/$defs/text"}}},
+          "else": {"properties": {"resolution": {"type": "null"}}}
+        }
+      ]
+    }
+  }
+}

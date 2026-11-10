@@ -1,0 +1,23 @@
+name: Foundation change
+description: Propose a bounded improvement or architectural decision.
+title: "[Change] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and intended outcome
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Scope and testable acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: decisions
+    attributes:
+      label: Alternatives, constraints and approval needs
+      description: Identify architectural decisions, tenant/admin steps and out-of-scope work.
+    validations:
+      required: true

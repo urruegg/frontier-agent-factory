@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+# Integrity pins describe upstream bytes, not platform-normalized copies.
+.agents/skills/** -text
+.agents/LICENSE* -text
+
+# Intake hashes describe exact acquired/baseline bytes on every platform.
+docs/intake/records/**/artifacts/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tests/fixtures/intake/source/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tests/fixtures/intake/workspace/docs/intake/records/**/artifacts/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
